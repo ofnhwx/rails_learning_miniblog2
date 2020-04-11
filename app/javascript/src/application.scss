@@ -1,5 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
 
+// ヘッダ固定に合わせてマージンを設定
+main {
+    margin-top: 70px;
+}
+
 // フラッシュに bootstrap のスタイルを適用
 .alert-notice {
     @extend .alert-info;
