@@ -1,0 +1,8 @@
+.row
+  .col
+    .card.mb-3
+      .card-body.p-3
+        %h6.card-title= post.user.email
+        .card-text
+          = simple_format h(post.content)
+          .text-right= post.created_at
