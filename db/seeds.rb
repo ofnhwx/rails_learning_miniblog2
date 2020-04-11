@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-User.create!(email: 'user@example.com', password: 'password')
+User.create!(username: 'user', email: 'user@example.com', password: 'password')
 
 10.times do
-  User.create!(email: Faker::Internet.email, password: 'password')
+  username = Faker::Internet.unique.username
+  email = Faker::Internet.unique.email
+  User.create!(username: username, email: email, password: 'password')
 end
 
 users = User.order(:create_at).take(6)
