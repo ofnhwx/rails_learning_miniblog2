@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def show; end
+  before_action :set_user
+
+  include Pagy::Backend
+
+  def show
+    @pagy, @posts = pagy(@user.posts)
+  end
 
   private
 
