@@ -1,3 +1,14 @@
+- unless user_signed_in?
+  .jumbotron.mt-4
+    %h1.display-4
+      = "#{full_title}へようこそ"
+    %p.lead
+      投稿するには
+      = link_to 'ログイン', new_user_session_path
+      するか
+      = link_to '会員登録', new_user_registration_path
+      してください
+    = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary'
 - if @posts.any?
   = render @posts
   .d-flex.justify-content-center

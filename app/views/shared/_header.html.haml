@@ -1,12 +1,16 @@
 %header
   %nav.navbar.fixed-top.navbar-dark.bg-dark.navbar-expand-lg
-    = link_to full_title, root_path, class: 'navbar-brand'
     %button.navbar-toggler{ type: 'button',
                             data: { toggle:'collapse', target: '#navbar' },
                             aria: { controls: 'navbar', expanded: 'false', label: 'Toggle navigation' }}
       %span.navbar-toggler-icon
+    = link_to full_title, root_path, class: 'navbar-brand'
     #navbar.collapse.navbar-collapse
       %ul.navbar-nav.mr-auto
         -# 左側
       %ul.navbar-nav
-        -# 右側
+        - if user_signed_in?
+          = nav_link 'ログアウト', destroy_user_session_path, method: :delete
+        - else
+          = nav_link '会員登録', new_user_registration_path
+          = nav_link 'ログイン', new_user_session_path
