@@ -15,6 +15,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    current_user.posts.destroy params[:id]
+    redirect_back fallback_location: home_path, notice: '投稿を削除しました'
+  end
+
   private
 
   def post_params
