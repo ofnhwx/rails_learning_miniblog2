@@ -1,0 +1,14 @@
+= render 'shared/errors', object: @post
+.row
+  .col-md-4.mb-3
+    .card.mb-3
+      .card-body
+        %h5.card-title
+          = gravatar_for current_user, size: 40
+          = current_user.username
+    = form_for @post do |f|
+      .form-group
+        = f.text_area :content, class: 'form-control', required: true, max: 10
+      = f.submit '投稿する', class: 'btn btn-primary btn-block'
+  .col-md-8
+    = render 'shared/posts'

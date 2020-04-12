@@ -1,0 +1,4 @@
+- if @posts.any?
+  = render @posts
+  .d-flex.justify-content-center
+    != pagy_bootstrap_nav(@pagy) if @pagy.pages > 1
