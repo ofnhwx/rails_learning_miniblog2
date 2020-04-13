@@ -6,12 +6,18 @@ class LikesController < ApplicationController
 
   def create
     current_user.like(@post)
-    redirect_back(fallback_location: root_path)
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
+    end
   end
 
   def destroy
     current_user.unlike(@post)
-    redirect_back(fallback_location: root_path)
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
+    end
   end
 
   private

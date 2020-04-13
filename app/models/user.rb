@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :post
 
   def like(post)
-    liked_posts << post
+    liked_posts << post unless like? post
   end
 
   def unlike(post)
