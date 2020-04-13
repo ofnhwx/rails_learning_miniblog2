@@ -4,8 +4,6 @@ class RootController < ApplicationController
   before_action :redirect_to_root, only: %i[home]
   before_action :redirect_to_home, only: %i[index]
 
-  include Pagy::Backend
-
   def index
     @pagy, @posts = pagy(Post.all)
   end
