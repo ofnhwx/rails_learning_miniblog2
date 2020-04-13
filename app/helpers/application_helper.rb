@@ -14,7 +14,7 @@ module ApplicationHelper
 
   def nav_link(text, path, method: :get)
     options = { class: current_page?(path) ? 'nav-item active' : 'nav-item' }
-    content_tag(:li, options) do
+    tag.li(:li, options) do
       link_to text, path, class: 'nav-link', method: method
     end
   end
