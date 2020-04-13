@@ -9,5 +9,12 @@
             %i.fas.fa-trash
       .card-body
         = simple_format h(post.content)
-      .card-footer
-        .text-right= post.created_at
+      .card-footer.d-flex.aline-items-center
+        - if current_user.like? post
+          = link_to unlike_post_path(post), method: :delete do
+            %i.fas.fa-heart
+        - else
+          = link_to like_post_path(post), method: :post do
+            %i.far.fa-heart
+        %span.ml-2.flex-grow-1= "#{post.likes.count} いいね"
+        %span= post.created_at

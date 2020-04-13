@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
   resources :posts, only: %i[create destroy] do
-    resources :likes, only: %i[create destroy]
+    member do
+      post 'like', to: 'likes#create'
+      delete 'unlike', to: 'likes#destroy'
+    end
   end
 end
