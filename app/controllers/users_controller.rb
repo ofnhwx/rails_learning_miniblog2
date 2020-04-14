@@ -6,10 +6,4 @@ class UsersController < ApplicationController
   def show
     @pagy, @posts = pagy(@user.posts)
   end
-
-  private
-
-  def set_user
-    @user = User.find(params[:id])
-  end
 end

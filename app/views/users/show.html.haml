@@ -1,10 +1,15 @@
 - provide :title, @user.username
 .row
-  .col-md-4.mb-3
+  .col-md-4.mb-3{ id: "user-#{@user.id}" }
     .card
       .card-body
         %h5.card-title
           = gravatar_for @user, size: 40
           = @user.username
+    .follow-button.mt-3
+      - if current_user.following?(@user)
+        = render 'users/unfollow', user: @user
+      - else
+        = render 'users/follow', user: @user
   .col-md-8
     = render 'shared/posts'
